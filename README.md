@@ -14,7 +14,8 @@
 
 macOS 15 以降
 
-**ダウンロード：初回配布を準備中**  
+**ダウンロード：初回配布を準備中**
+
 [配布状況を見る](https://github.com/ymasaki/public-releases/releases)
 
 ---
