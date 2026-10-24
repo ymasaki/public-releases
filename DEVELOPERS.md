@@ -73,6 +73,8 @@ Release の公開・匿名取得・ハッシュ照合後に、対象アプリの
 - ソースリビジョンは署名済み Info.plist の `DevBoardCommit` と照合します。
 - 開発専用の `DevBoardSourceRepo` には端末内のソースパスが入るため、配布署名の前に除外します。
 - `python3 tools/prepare-release.py <署名・公証済みapp> <新しい出力フォルダ> --notes <変更点のUTF-8ファイル>` は、これらの DevBoard 固有キーを扱う参考実装です。署名・公証・構成を確認して ZIP と JSON を作り、出力先の上書きやアップロードは行いません。他のアプリで流用するときは、アプリ固有キーの読取り・非公開メタ情報の検査を自身の仕様に合わせてください。
+- DevBoard のソースでは `scripts/public-release.sh [--ref release] --notes <変更点のファイル> <新しい出力フォルダ>` が、指定ブランチのソースを取り出してビルドし、`DevBoardSourceRepo` を外して Developer ID・hardened runtime（音声入力のためマイクの許可付き）で署名し直し、公証・staple してから上の作成スクリプトで ZIP と JSON を作ります。公証の資格情報は事前に `xcrun notarytool store-credentials devboard-notary …` でキーチェーンに登録します（名前は `DEVBOARD_NOTARY_PROFILE` で変更可）。公開は行いません。
+- 配布用（Developer ID）と各 Mac のローカルビルド（Apple Development）は同じチームなので相互に更新できますが、署名の証明書が変わると macOS の許可（アクセシビリティ・キーチェーンの読取りなど）を聞き直されることがあります。
 
 DevBoard は既存のホスト経由・ローカルビルドも残します。同時に複数の経路で取得・交換せず、開始した経路と候補を完了・失敗時も照合します。取得失敗で準備済み版を消しません。失敗した同じクラウド版は定期的に受け取り直さず、「アップデートを確認」で再試行します。iPhone自身の更新はTestFlightのままです。
 
