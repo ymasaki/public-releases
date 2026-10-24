@@ -48,13 +48,22 @@ def metadata(info, architectures, size, digest, notes):
                    architectures=architectures,
                    asset=dict(url=f"https://github.com/{REPOSITORY}/releases/download/{tag}/{filename}",
                               size=size, sha256=digest))
-    if len(json.dumps(release, ensure_ascii=False).encode()) > 64 << 10:
+    data = manifest_bytes(release)
+    return release, filename, data
+
+
+def manifest_bytes(release):
+    data = (json.dumps(release, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    if len(data) > 64 << 10:
         raise ValueError("Manifest exceeds 64 KiB")
-    return release, filename
+    return data
 
 
 def prepare(app, destination, notes):
     app = app.resolve()
+    destination = destination.resolve()
+    if destination == app or app in destination.parents:
+        raise ValueError("Output must be outside the input app")
     info = plistlib.loads((app / "Contents/Info.plist").read_bytes())
     # This is the public Internet distribution boundary, stricter than the
     # existing same-Team peer receiver which also accepts Apple Development.
@@ -75,7 +84,6 @@ def prepare(app, destination, notes):
     if len(paths) > 20_000 or sum(p.stat().st_size for p in paths if p.is_file()) > 2 << 30:
         raise ValueError("Artifact exceeds receiver expansion limits")
     # Work outside the source app and refuse to overwrite a prior output.
-    destination = destination.resolve()
     if destination.exists():
         raise ValueError("Output already exists; release artifacts are immutable")
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -88,9 +96,9 @@ def prepare(app, destination, notes):
             for chunk in iter(lambda: stream.read(1 << 20), b""):
                 hash_value.update(chunk)
         digest = hash_value.hexdigest()
-        release, filename = metadata(info, architectures, archive.stat().st_size, digest, notes)
+        release, filename, data = metadata(info, architectures, archive.stat().st_size, digest, notes)
         archive.rename(directory / filename)
-        (directory / "stable.json").write_text(json.dumps(release, ensure_ascii=False, indent=2) + "\n")
+        (directory / "stable.json").write_bytes(data)
         shutil.copytree(directory, destination)
     print(destination)
     print(f"Tag: {release['appID']}-{release['version']}-{release['build']}")
