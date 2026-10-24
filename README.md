@@ -18,6 +18,22 @@ macOS 15 以降
 
 ZIP を開き、DevBoard.app を「アプリケーション」フォルダへ移してください。以降の新しい版はアプリ内でお知らせします。
 
+<!-- dropsync:start -->
+---
+
+<img src="assets/com.yamamoto.DropSync.png" width="80" height="80" alt="DropSync のアイコン">
+
+## DropSync
+
+Dropbox と Mac のフォルダを同期するメニューバーアプリです。
+
+macOS 14.0 以降（arm64）
+
+**[最新版をダウンロード（0.1.0）](https://github.com/ymasaki/public-releases/releases/download/com.yamamoto.DropSync-0.1.0-47/com.yamamoto.DropSync-0.1.0-47.zip)**
+
+ZIP を開き、DropSync.app を「アプリケーション」フォルダへ移してください。以降の更新はアプリ内でお知らせします。
+<!-- dropsync:end -->
+
 ---
 
 アプリを配布する方へ → [開発者向けガイド](DEVELOPERS.md)
