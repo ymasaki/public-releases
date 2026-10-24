@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "appID": "local.masaki.DevBoard",
+  "channel": "stable",
+  "version": "0.35.3",
+  "build": 1573,
+  "commit": "10df43613708005aa5e47f897fa5708ca667e77a",
+  "notes": [
+    "GitHub から最新版を受け取れるようになりました",
+    "更新の取得に失敗したときの案内と操作を見やすくしました"
+  ],
+  "minimumSystemVersion": "15.0",
+  "architectures": [
+    "arm64"
+  ],
+  "asset": {
+    "url": "https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.35.3-1573/local.masaki.DevBoard-0.35.3-1573.zip",
+    "size": 40663791,
+    "sha256": "0f0efc54da0f6bec24feed9ad58319c4aeaf028c9d8674e46c344957a1843e2e"
+  }
+}
