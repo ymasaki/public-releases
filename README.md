@@ -14,7 +14,7 @@
 ```json
 {
   "schemaVersion": 1,
-  "appID": "local.masaki.DevBoard",
+  "appID": "com.example.MyApp",
   "channel": "stable",
   "version": "0.43.0",
   "build": 12345,
@@ -23,22 +23,22 @@
   "minimumSystemVersion": "15.0",
   "architectures": ["arm64"],
   "asset": {
-    "url": "https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.43.0-12345/local.masaki.DevBoard-0.43.0-12345.zip",
+    "url": "https://github.com/ymasaki/public-releases/releases/download/com.example.MyApp-0.43.0-12345/com.example.MyApp-0.43.0-12345.zip",
     "size": 12345678,
     "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
   }
 }
 ```
 
-`version` は表示用の `MAJOR.MINOR.PATCH`、`build` はアプリごとに単調増加する正整数（`CFBundleVersion` と一致）です。`commit` は署名された Info.plist の `DevBoardCommit` にも埋める40桁のソースリビジョンです。他のアプリもこのキーを配布ビルドに用意します。`notes` は1項目2000文字以内・最大100項目。`size` は ZIP の実バイト数、`sha256` は ZIP 全体の小文字64桁 SHA-256。`minimumSystemVersion` と `architectures` は起動前の互換性確認用で、署名されたバイナリとも照合します。
+`version` は表示用の `MAJOR.MINOR.PATCH`、`build` はアプリごとに単調増加する正整数（`CFBundleVersion` と一致）です。`commit` は40桁のソースリビジョンです。同じ値を署名済みアプリ内にも埋め、取得時に照合します。Info.plist でのキー名はアプリごとに決めます（例: `SourceCommit`）。配布 JSON のフィールド名は共通の `commit` です。`notes` は1項目2000文字以内・最大100項目。`size` は ZIP の実バイト数、`sha256` は ZIP 全体の小文字64桁 SHA-256。`minimumSystemVersion` と `architectures` は起動前の互換性確認用で、署名されたバイナリとも照合します。
 
 ZIP の直下は `<アプリ名>.app/` だけにします。実行権限を保持し、リンク・親ディレクトリ参照・重複項目を含めません。ZIP は512 MiB以下、展開後2 GiB以下、2万項目以下。フレームワーク等にシンボリックリンクがあるアプリは、この形式の利用前に各アプリ側で検討してください。
 
 ## 配布物を作る
 
-1. 配布する版を人が決定します。署名前に Info.plist から開発端末のパス `DevBoardSourceRepo` を削除します（署名後には変更しません）。Developer ID Application でアプリと入れ子の実行物を署名し、必要な権限と hardened runtime を設定します。Apple Development / ad hoc 署名のビルドは一般配布しません。iCloud 等を利用する場合は配布用プロファイルも用意します。
+1. 配布する版を人が決定します。署名前に、開発端末の絶対パスや開発専用設定など、各アプリ固有の非公開メタ情報を取り除きます（署名後には変更しません）。Developer ID Application でアプリと入れ子の実行物を署名し、必要な権限と hardened runtime を設定します。Apple Development / ad hoc 署名のビルドは一般配布しません。iCloud 等を利用する場合は配布用プロファイルも用意します。
 2. Apple の `notarytool` で公証し、`xcrun stapler staple <app>` でチケットを付けます。Gatekeeper と `stapler validate` を通ることを確認します。署名・公証に使う資格情報はこのリポジトリへ保存しません。
-3. このリポジトリの `python3 tools/prepare-release.py <署名・公証済みapp> <新しい出力フォルダ> --notes <変更点のUTF-8ファイル>`（DevBoard ソースでは `scripts/prepare-public-release.py`） を実行すると、署名・公証・構成を確認して ZIP と JSON をローカルに作ります。出力先の上書きやアップロードは行いません。他のアプリでも同じフィールドを生成してください。
+3. 署名・公証・構成を確認したアプリから、上の共通形式の ZIP と JSON をローカルに作ります。各アプリの作成ツールで、署名済み情報のキー名と配布 JSON の対応を定めてください。付属の作成スクリプトは、下の「利用例: DevBoard」で説明する参考実装です。
 
 ## 公開する（人の操作）
 
@@ -57,8 +57,16 @@ ZIP の直下は `<アプリ名>.app/` だけにします。実行権限を保�
 
 1. スキーマ・appID・channel・容量・URL・対応OS/CPUを確かめ、自分と準備済み候補より大きいbuildだけを選びます。同buildで異なる内容が届いたら既存候補を維持します。
 2. メタ情報は実受信64 KiB/全体30秒、ZIPは宣言size以下かつ512 MiB/全体10分、無通信30秒以内で取得します。HTTPSの指定repoの Release URL と GitHub 配布ホスト以外へ転送しません。資格情報は不要です。失敗・取消で取得枠と一時ファイルを解放します。
-3. サイズ・SHA256・ZIPの項目/展開サイズを検査し、展開したアプリの Apple 署名、インストール済みアプリと同じ Team ID / Bundle ID、署名済み情報のbuild/version/commit、実行ファイルのCPU/OS互換を確かめます。メタ情報やSHA256だけを根拠に実行しません。各アプリは自身に合う検証器を実装します（DevBoardの検証器はDevBoard専用）。
+3. サイズ・SHA256・ZIPの項目/展開サイズを検査し、展開したアプリの Apple 署名、インストール済みアプリと同じ Team ID / Bundle ID、署名済み情報のbuild/version/commit、実行ファイルのCPU/OS互換を確かめます。メタ情報やSHA256だけを根拠に実行しません。各アプリは、自身の署名済み情報やアプリ構成に合う検証器を実装します。
 4. 準備できたらアプリ内で知らせ、利用者が「アップデートを実行」を押した時に再検証して交換・再起動します。作業や入力画面の終了を待ち、起動失敗時には旧版へ戻せるようにします。
+
+## 利用例: DevBoard
+
+以下は1つのアプリの実装例であり、共用リポジトリの必須キーや操作ではありません。他のアプリが `DevBoard` で始まるキーを用意する必要はありません。
+
+- ソースリビジョンは署名済み Info.plist の `DevBoardCommit` と照合します。
+- 開発専用の `DevBoardSourceRepo` には端末内のソースパスが入るため、配布署名の前に除外します。
+- `python3 tools/prepare-release.py <署名・公証済みapp> <新しい出力フォルダ> --notes <変更点のUTF-8ファイル>` は、これらの DevBoard 固有キーを扱う参考実装です。署名・公証・構成を確認して ZIP と JSON を作り、出力先の上書きやアップロードは行いません。他のアプリで流用するときは、アプリ固有キーの読取り・非公開メタ情報の検査を自身の仕様に合わせてください。
 
 DevBoard は既存のホスト経由・ローカルビルドも残します。同時に複数の経路で取得・交換せず、開始した経路と候補を完了・失敗時も照合します。取得失敗で準備済み版を消しません。失敗した同じクラウド版は定期的に受け取り直さず、「アップデートを確認」で再試行します。iPhone自身の更新はTestFlightのままです。
 
