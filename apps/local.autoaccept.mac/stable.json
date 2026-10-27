@@ -3,8 +3,8 @@
   "appID": "local.autoaccept.mac",
   "channel": "stable",
   "version": "0.1.0",
-  "build": 19,
-  "commit": "d1c0b9176cd01c8ffef66de9925dfbe9814c930f",
+  "build": 22,
+  "commit": "7565dc9506ee95266479d794a2d97e167cd1bd4e",
   "notes": [
     "アプリ内で最新版を受け取り、更新できるようになりました。"
   ],
@@ -13,8 +13,8 @@
     "arm64"
   ],
   "asset": {
-    "url": "https://github.com/ymasaki/public-releases/releases/download/local.autoaccept.mac-0.1.0-19/local.autoaccept.mac-0.1.0-19.zip",
-    "size": 780089,
-    "sha256": "36087d720c7eddeae13378f683e650c020c98c8c9aa3cecb2f674ff2a7a67021"
+    "url": "https://github.com/ymasaki/public-releases/releases/download/local.autoaccept.mac-0.1.0-22/local.autoaccept.mac-0.1.0-22.zip",
+    "size": 780094,
+    "sha256": "1eb03f5d2e3951ed2adcfa0b7c9c03387b7bc8ed91f16a19555527aef5dc7cef"
   }
 }
