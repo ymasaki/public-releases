@@ -49,3 +49,15 @@ macOS 14.0 以降（arm64）
 
 **[最新版をダウンロード（0.1.0）](https://github.com/ymasaki/public-releases/releases/download/local.autoaccept.mac-0.1.0-19/local.autoaccept.mac-0.1.0-19.zip)**
 <!-- app:local.autoaccept.mac:end -->
+
+<!-- app:local.remoteapps.mac:start -->
+## RemoteApps
+
+<img src="assets/local.remoteapps.mac.png" width="80" height="80" alt="RemoteApps">
+
+自分のMacのアプリや画面を別のMacから操作します。
+
+macOS 15.0 以降（x86_64 / arm64）
+
+**[最新版をダウンロード（0.45.0）](https://github.com/ymasaki/public-releases/releases/download/local.remoteapps.mac-0.45.0-165/local.remoteapps.mac-0.45.0-165.zip)**
+<!-- app:local.remoteapps.mac:end -->
