@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "appID": "local.remoteapps.mac",
   "channel": "stable",
-  "version": "0.45.1",
-  "build": 166,
-  "commit": "bf32091a174ab917eb58b278de24c71ff8bc7408",
+  "version": "0.45.2",
+  "build": 167,
+  "commit": "67105c524f0fea08f58178b3145a18dcc59d9de1",
   "notes": [
     "アプリの使いやすさと安定性を改善しました。"
   ],
@@ -14,8 +14,8 @@
     "arm64"
   ],
   "asset": {
-    "url": "https://github.com/ymasaki/public-releases/releases/download/local.remoteapps.mac-0.45.1-166/local.remoteapps.mac-0.45.1-166.zip",
-    "size": 35784959,
-    "sha256": "d4da3d4d83be06c52a6d6752eb675eb71d128d68a69815cfd38e0cea5a86815f"
+    "url": "https://github.com/ymasaki/public-releases/releases/download/local.remoteapps.mac-0.45.2-167/local.remoteapps.mac-0.45.2-167.zip",
+    "size": 35789533,
+    "sha256": "9189677844ac8508918093a163513457bfbcd8039a668ea3c0bb0ce036184c00"
   }
 }
