@@ -59,5 +59,5 @@ macOS 14.0 以降（arm64）
 
 macOS 15.0 以降（x86_64 / arm64）
 
-**[最新版をダウンロード（0.45.7）](https://github.com/ymasaki/public-releases/releases/download/local.remoteapps.mac-0.45.7-172/local.remoteapps.mac-0.45.7-172.zip)**
+**[最新版をダウンロード（0.45.8）](https://github.com/ymasaki/public-releases/releases/download/local.remoteapps.mac-0.45.8-173/local.remoteapps.mac-0.45.8-173.zip)**
 <!-- app:local.remoteapps.mac:end -->
