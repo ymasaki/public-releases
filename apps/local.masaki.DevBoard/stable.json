@@ -3,8 +3,8 @@
   "appID": "local.masaki.DevBoard",
   "channel": "stable",
   "version": "0.50.4",
-  "build": 1885,
-  "commit": "4557b5c714d9b5673ee511612a07f66330c502d1",
+  "build": 1893,
+  "commit": "13d1cafae3dda45d8103565fc0f48e567d4bc761",
   "notes": [
     "DevBoard を更新しました。"
   ],
@@ -13,8 +13,8 @@
     "arm64"
   ],
   "asset": {
-    "url": "https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.50.4-1885/local.masaki.DevBoard-0.50.4-1885.zip",
-    "size": 44099331,
-    "sha256": "042abe91bdb0a001fd4bc29ade6e41b9f49f66d9e2c135645e9bec11d9650990"
+    "url": "https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.50.4-1893/local.masaki.DevBoard-0.50.4-1893.zip",
+    "size": 44099301,
+    "sha256": "d91642bac81a2457eb2b115876604d7cc2071023e9fa9f20db1b7bfb7f976d28"
   }
 }
