@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "appID": "com.yamamoto.DropSync",
   "channel": "stable",
-  "version": "0.9.0",
-  "build": 118,
-  "commit": "2b1a8a0c359466bdd6e237de646772bb319aecfb",
+  "version": "0.9.1",
+  "build": 123,
+  "commit": "48108283f180e457a02b5e3c203f8803bd469af5",
   "notes": [],
   "minimumSystemVersion": "14.0",
   "architectures": [
     "arm64"
   ],
   "asset": {
-    "url": "https://github.com/ymasaki/public-releases/releases/download/com.yamamoto.DropSync-0.9.0-118/com.yamamoto.DropSync-0.9.0-118.zip",
-    "size": 4064069,
-    "sha256": "a4bfb8707e9cbb489650280fd290bd65975f7559f7bfd3ed7bde68818adf1f19"
+    "url": "https://github.com/ymasaki/public-releases/releases/download/com.yamamoto.DropSync-0.9.1-123/com.yamamoto.DropSync-0.9.1-123.zip",
+    "size": 4067974,
+    "sha256": "6e03bf4f1dde36f76add858f3407bafab7f3316696fe0b0b006580c6a53def7a"
   }
 }
