@@ -29,7 +29,7 @@ Dropbox と Mac のフォルダを同期するメニューバーアプリです�
 
 macOS 14.0 以降（arm64）
 
-**[最新版をダウンロード（0.12.1）](https://github.com/ymasaki/public-releases/releases/download/com.yamamoto.DropSync-0.12.1-141/com.yamamoto.DropSync-0.12.1-141.zip)**
+**[最新版をダウンロード（0.13.1）](https://github.com/ymasaki/public-releases/releases/download/com.yamamoto.DropSync-0.13.1-144/com.yamamoto.DropSync-0.13.1-144.zip)**
 
 ZIP を開き、DropSync.app を「アプリケーション」フォルダへ移してください。以降の更新はアプリ内でお知らせします。
 <!-- dropsync:end -->
