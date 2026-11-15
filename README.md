@@ -14,7 +14,7 @@
 
 macOS 15 以降
 
-**[最新版をダウンロード（0.59.13）](https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.59.13-2222/local.masaki.DevBoard-0.59.13-2222.zip)**
+**[最新版をダウンロード（0.60.5）](https://github.com/ymasaki/public-releases/releases/download/local.masaki.DevBoard-0.60.5-2237/local.masaki.DevBoard-0.60.5-2237.zip)**
 
 ZIP を開き、DevBoard.app を「アプリケーション」フォルダへ移してください。以降の新しい版はアプリ内でお知らせします。
 
