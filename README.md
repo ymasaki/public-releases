@@ -47,7 +47,7 @@ ZIP を開き、DropSync.app を「アプリケーション」フォルダへ移
 
 macOS 14.0 以降（arm64）
 
-**[最新版をダウンロード（0.1.0）](https://github.com/ymasaki/public-releases/releases/download/local.autoaccept.mac-0.1.0-27/local.autoaccept.mac-0.1.0-27.zip)**
+**[最新版をダウンロード（0.1.0）](https://github.com/ymasaki/public-releases/releases/download/local.autoaccept.mac-0.1.0-28/local.autoaccept.mac-0.1.0-28.zip)**
 <!-- app:local.autoaccept.mac:end -->
 
 <!-- app:local.remoteapps.mac:start -->
