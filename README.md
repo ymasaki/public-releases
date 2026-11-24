@@ -1,6 +1,7 @@
 # Apps
 
 アプリの紹介と、最新版の配布ページです。
+アプリを配布する方へ → [開発者向けガイド](DEVELOPERS.md)
 
 ---
 
@@ -36,14 +37,12 @@ ZIP を開き、DropSync.app を「アプリケーション」フォルダへ移
 
 ---
 
-アプリを配布する方へ → [開発者向けガイド](DEVELOPERS.md)
-
 <!-- app:local.autoaccept.mac:start -->
 ## AutoAccept
 
 <img src="assets/local.autoaccept.mac.png" width="80" height="80" alt="AutoAccept">
 
-リムーバブルディスクへのアクセス確認を自動で許可するMacアプリです。
+リムーバブルディスクへのアクセス確認やクラッシュレポートを自動で許可・閉じるMacアプリです。
 
 macOS 14.0 以降（arm64）
 
